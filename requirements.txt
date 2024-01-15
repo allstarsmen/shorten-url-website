@@ -1,0 +1,1 @@
+A customer wants to have a website which will help their users to shorten the URL.
