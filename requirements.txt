@@ -1,1 +1,25 @@
 A customer wants to have a website which will help their users to shorten the URL.
+
+Questions and Answers:
+1. Where does the URL come from?
+- The user will enter the URL into an input field.
+2. What types of URLs will we support?
+- Only supports the URLs start with HTTP and HTTPS.
+3. Should we limit the length of the URLs?
+- Yes. Must be less than 2000 characters, because most browsers will not work with a URL longer than 2000 characters.
+4. Should we check if the given URL is a real one? Because the users can give us a fake URL.
+- No, if the users give us a fake or not working URL, then the shortened URL will redirect to the fake or not working URL.
+5. Should we limit the number of shortened URLs for each user?
+- Yes, each user can only create 5 shortened URLs in a day.
+6. Can the user define their custom URLs? ex: https://short.url/my-custom-url
+- No, because this is a free web app, so the user will not be able to define their custom URLs.
+7. How long the shortened URLs will be kept on the server?
+- If no one access the shortened URLs in 3 days, we will delete it.
+8. Can the user manage their URLs such as Edit / Delete each URL?
+- No, because this is a free web app, so the user will not be able to manage their URLs.
+9. Can we use Next.js framework to build this app?
+- Yes.
+10. Can we use MongoDB to store data?
+- Yes.
+11. Can we use Docker to containerize of app? It will make sure our developers will have the same development environment and easier to deploy to any Cloud services (ex: Google Clouds, AWS, etc...)
+- Yes.
