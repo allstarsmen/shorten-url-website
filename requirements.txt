@@ -23,3 +23,7 @@ Questions and Answers:
 - Yes.
 11. Can we use Docker to containerize of app? It will make sure our developers will have the same development environment and easier to deploy to any Cloud services (ex: Google Clouds, AWS, etc...)
 - Yes.
+12. What user can do with the shortened URL?
+- He can copy it and paste it somewhere else.
+13. If the app receives the same URL multiple times for shortened, how will we handle it?
+- In this case, just create a new shortened URL for each time the user enters the URL.
