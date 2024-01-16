@@ -1,7 +1,19 @@
 services:
-  web-app:
+  web:
     build: .
     ports:
       - "3000:3000"
     volumes:
       - "./app:/webapp/app"
+    depends_on:
+      - database
+  database:
+    image: mongo:7.0
+    ports:
+      - "27017:27017"
+    restart: always
+    volumes:
+      - "./mongodb:/data/db"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME:root
+      - MONGO_INITDB_ROOT_PASSWORD:root
