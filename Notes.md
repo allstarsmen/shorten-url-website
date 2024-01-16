@@ -8,4 +8,4 @@
 ### Analysis
 - Dive deeper into the requirements and make a list of require features. Try to figure out if there is any hidden features we need to implements (Ex: Auto delete unused URLs, etc...)
 - Decide with technology should be used in the project.
-- Making a list of tasks based on the information of the 2 steps above (ex: Task - create an development environment by using Docker, Task - create a blueprint for backend, etc...).
+- Making a list of tasks based on the information of the 2 steps above (ex: Task - create an development environment by using Docker, Task - create a blueprint for backend, etc...). And sort the tasks based on their importance. If that task is not implemented, the system will not work.
