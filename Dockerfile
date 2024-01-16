@@ -1,6 +1,6 @@
 FROM node:20-alpine
 
-WORKDIR /wepapp
+WORKDIR /webapp
 
 COPY package.json .
 
