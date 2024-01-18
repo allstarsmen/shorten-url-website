@@ -1,3 +1,5 @@
+# Khi setup repository, cái main branch, nhớ setup CI/CD cho cái auto build/test và lint
+
 # Software development life cycle
 
 ### Gathering requirements:
