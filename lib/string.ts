@@ -2,7 +2,7 @@
 // These characters are safe in URLs (ref: https://support.exactonline.com/community/s/knowledge-base#All-All-DNO-Content-urlcharacters)
 // Author: Pham Duong Hoang Nam (allstarsmen@gmail.com)
 
-// Alphanumeric [0-9a-zA-Z], special characters $-_.+!*'(),
+// Alphanumeric [0-9a-zA-Z], special characters -_.!*'()
 const CHARS = [
   0,
   1,
@@ -66,11 +66,9 @@ const CHARS = [
   "X",
   "Y",
   "Z",
-  "$",
   "-",
   "_",
   ".",
-  "+",
   "!",
   "*",
   "'",

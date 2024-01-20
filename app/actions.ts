@@ -49,3 +49,34 @@ export async function generateURL(prevState: InitState, formData: FormData) {
     message: "New url is generated successfully",
   };
 }
+
+function isValidURL(url: string) {
+  // Alphanumeric [0-9a-zA-Z], special characters -_.!*'()
+  const pattern = /[^\w-.!*'()]+/gi;
+  return url.length === 8 && !pattern.test(url);
+}
+
+export async function getURL(uniqueStr: string) {
+  if (!isValidURL(uniqueStr)) {
+    return {
+      success: false,
+      message: "Invalid URL",
+    };
+  }
+
+  const client = await clientPromise;
+  const db = client.db("TEST");
+  const result = await db.collection("shortened_urls").findOne({ uniqueStr });
+
+  if (!result) {
+    return {
+      success: false,
+      message: "Invalid URL",
+    };
+  }
+
+  return {
+    success: true,
+    originUrl: result.originUrl,
+  };
+}
