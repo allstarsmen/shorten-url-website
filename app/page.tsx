@@ -1,11 +1,10 @@
 "use client";
 
-import { generateUniqueString } from "@/lib/string";
 import { useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { generateURL } from "./actions";
-import { InitState } from "./types/initState";
 import Toasts from "./toasts";
+import { InitState } from "./types/initState";
 
 const initState: InitState = {
   message: "",
