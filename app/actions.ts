@@ -8,7 +8,11 @@ import clientPromise from "@/lib/db";
 export async function generateURL(prevState: InitState, formData: FormData) {
   const schema = z
     .object({
-      originUrl: z.string().url(),
+      originUrl: z
+        .string()
+        .regex(/^(http|https):\/\//)
+        .max(2000)
+        .url(),
     })
     .required();
 
