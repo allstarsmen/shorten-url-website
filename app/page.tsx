@@ -76,7 +76,7 @@ export default function Home() {
           <div className="mt-2 w-full px-3 py-3 border flex items-baseline gap-5">
             <div className="flex-grow">
               <a
-                href="{newUrl}"
+                href={newURL(state.uniqueStr)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-700 hover:text-blue-900"
