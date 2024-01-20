@@ -4,6 +4,7 @@ import { generateUniqueString } from "@/lib/string";
 import { z } from "zod";
 import { InitState } from "./types/initState";
 import clientPromise from "@/lib/db";
+import { isValidURL } from "@/lib/url";
 
 export async function generateURL(prevState: InitState, formData: FormData) {
   const schema = z
@@ -48,12 +49,6 @@ export async function generateURL(prevState: InitState, formData: FormData) {
     uniqueStr,
     message: "New url is generated successfully",
   };
-}
-
-function isValidURL(url: string) {
-  // Alphanumeric [0-9a-zA-Z], special characters -_.!*'()
-  const pattern = /[^\w-.!*'()]+/gi;
-  return url.length === 8 && !pattern.test(url);
 }
 
 export async function getURL(uniqueStr: string) {
