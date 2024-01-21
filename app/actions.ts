@@ -5,8 +5,13 @@ import { generateUniqueString } from "@/lib/string";
 import { isValidURL } from "@/lib/url";
 import { z } from "zod";
 import { InitState } from "./types/initState";
+import { MongoClient } from "mongodb";
 
-export async function generateURL(prevState: InitState, formData: FormData) {
+export async function generateURL(
+  prevState: InitState,
+  formData: FormData,
+  testClient?: MongoClient
+) {
   const schema = z
     .object({
       originUrl: z
@@ -30,7 +35,7 @@ export async function generateURL(prevState: InitState, formData: FormData) {
 
   const data = parse.data;
   const uniqueStr = generateUniqueString();
-  const result = await insertData(data.originUrl, uniqueStr);
+  const result = await insertData(data.originUrl, uniqueStr, testClient);
 
   if (!result.acknowledged) {
     return {
@@ -46,7 +51,7 @@ export async function generateURL(prevState: InitState, formData: FormData) {
   };
 }
 
-export async function getURL(uniqueStr: string) {
+export async function getURL(uniqueStr: string, testClient?: MongoClient) {
   if (!isValidURL(uniqueStr)) {
     return {
       success: false,
@@ -54,7 +59,7 @@ export async function getURL(uniqueStr: string) {
     };
   }
 
-  const result = await getData(uniqueStr);
+  const result = await getData(uniqueStr, testClient);
 
   if (!result) {
     return {

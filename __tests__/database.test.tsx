@@ -1,7 +1,8 @@
 /**
  * @jest-environment node
  */
-import { getURL } from "@/app/actions";
+import { generateURL } from "@/app/actions";
+import { InitState } from "@/app/types/initState";
 import { getData, insertData } from "@/lib/db";
 import { generateUniqueString } from "@/lib/string";
 import { MongoClient } from "mongodb";
