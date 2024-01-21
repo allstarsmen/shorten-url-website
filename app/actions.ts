@@ -1,10 +1,10 @@
 "use server";
 
+import { getData, insertData } from "@/lib/db";
 import { generateUniqueString } from "@/lib/string";
+import { isValidURL } from "@/lib/url";
 import { z } from "zod";
 import { InitState } from "./types/initState";
-import clientPromise from "@/lib/db";
-import { isValidURL } from "@/lib/url";
 
 export async function generateURL(prevState: InitState, formData: FormData) {
   const schema = z
@@ -29,13 +29,8 @@ export async function generateURL(prevState: InitState, formData: FormData) {
   }
 
   const data = parse.data;
-  const client = await clientPromise;
-  const db = client.db("TEST");
   const uniqueStr = generateUniqueString();
-  const result = await db.collection("shortened_urls").insertOne({
-    originUrl: data.originUrl,
-    uniqueStr,
-  });
+  const result = await insertData(data.originUrl, uniqueStr);
 
   if (!result.acknowledged) {
     return {
@@ -59,9 +54,7 @@ export async function getURL(uniqueStr: string) {
     };
   }
 
-  const client = await clientPromise;
-  const db = client.db("TEST");
-  const result = await db.collection("shortened_urls").findOne({ uniqueStr });
+  const result = await getData(uniqueStr);
 
   if (!result) {
     return {
