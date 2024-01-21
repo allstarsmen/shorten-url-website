@@ -38,7 +38,6 @@ const insertData = async (
     originUrl,
     uniqueStr,
   });
-  if (!testClient) client.close();
   return result;
 };
 
@@ -46,7 +45,6 @@ const getData = async (uniqueStr: string, testClient?: MongoClient) => {
   const client = testClient || (await mongoDbClient());
   const db = client.db(DB_NAME);
   const result = await db.collection(COLLECTION).findOne({ uniqueStr });
-  if (!testClient) client.close();
   return result;
 };
 
